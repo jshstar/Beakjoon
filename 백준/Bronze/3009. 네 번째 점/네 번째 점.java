@@ -1,15 +1,19 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
-	public static void main(String[] args){
-        Scanner sc =  new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int[] xArr = new int[3];
 		int[] yArr = new int[3];
 		for (int i = 0; i < 3; i++) {
-			xArr[i] = sc.nextInt();
-			yArr[i] = sc.nextInt();
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			xArr[i] = Integer.parseInt(st.nextToken());
+			yArr[i] = Integer.parseInt(st.nextToken());
 		}
 		int x4 = 0;
 		int y4 = 0;
@@ -26,5 +30,6 @@ public class Main {
 			y4 = yArr[0];
 		}
 		System.out.println(x4 + " " + y4);
+		br.close();
 	}
 }
