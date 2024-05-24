@@ -7,7 +7,6 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(br.readLine());
 
-		int total = 0;
 		for (int i = 0; i < t; i++) {
 			Stack<Character> stack = new Stack<>();
 			String s = br.readLine();
