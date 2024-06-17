@@ -20,7 +20,7 @@ public class Main {
 			map.put(br.readLine(), 1);
 		}
 		for (int i = 0; i < m; i++) {
-			if(map.get(br.readLine()) != null) {
+			if(map.containsKey(br.readLine())) {
 				cnt++;
 			}
 		}
