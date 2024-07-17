@@ -11,19 +11,17 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int n = Integer.parseInt(st.nextToken());
-		int m = Integer.parseInt(st.nextToken());
-		int[] arr = new int[n];
+		int k = Integer.parseInt(st.nextToken());
+		int[] arr = new int[n + 1];
 		int max = Integer.MIN_VALUE;
 		st =new StringTokenizer(br.readLine(), " ");
-		for (int i = 0; i < n; i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
+		for (int i = 1; i <= n; i++) {
+			arr[i] = arr[i - 1] + Integer.parseInt(st.nextToken());
 		}
-		for (int i = 0; i < n - m + 1; i++) {
-			for (int j = i + 1; j < i + m; j++) {
-				arr[i] += arr[j];
-			}
-			if(max < arr[i]){
-				max = arr[i];
+		for (int i = k; i <= n; i++) {
+			int sum = arr[i] - arr[i - k];
+			if(max < sum) {
+				max = sum;
 			}
 		}
 		bw.write(String.valueOf(max));
