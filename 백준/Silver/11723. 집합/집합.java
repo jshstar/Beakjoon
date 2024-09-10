@@ -14,48 +14,46 @@ public class Main {
 		StringTokenizer st;
 		HashSet<Integer> set = new HashSet<>();
 		int m = Integer.parseInt(br.readLine());
-		int num = 0;
-
-		for (int i = 0; i < m; i++) {
+		int bitset = 0;
+		while(m --> 0) {
 		    st = new StringTokenizer(br.readLine(), " ");
-			String cal = st.nextToken();
-			if(!cal.equals("all") && !cal.equals("empty")){
-				num = Integer.parseInt(st.nextToken());
-			}
+			int num = 0;
+			String op = st.nextToken();
 
-			switch(cal){
+
+			switch(op){
 				case "add" :
-					set.add(num);
+					num = Integer.parseInt(st.nextToken());
+					bitset |= 1 << (num - 1);
 					break;
 				case "remove" :
-					set.remove(num);
+					num = Integer.parseInt(st.nextToken());
+					bitset = bitset & ~(1 << (num - 1));
 					break;
 				case "check" :
-					if(set.contains(num)){
+					num = Integer.parseInt(st.nextToken());
+					if((bitset & (1 << (num - 1))) != 0){
 						bw.write(1 + "\n");
 					} else {
 						bw.write( 0 + "\n");
 					}
 					break;
 				case "toggle" :
-					if(set.contains(num)){
-						set.remove(num);
-					} else {
-						set.add(num);
-					}
+					num = Integer.parseInt(st.nextToken());
+					bitset ^= (1 << (num - 1));
 					break;
 				case "all" :
-					for (int j = 1; j <=20 ; j++) {
-						set.add(j);
-					}
+					bitset |= (~0);
 					break;
 				case "empty" :
-					set.clear();
+					bitset &= 0;
 					break;
 			}
 
 
 		}
+
+
 
 		bw.flush();
 		bw.close();
