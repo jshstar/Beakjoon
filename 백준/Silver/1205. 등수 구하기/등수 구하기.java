@@ -12,9 +12,9 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int n = Integer.parseInt(st.nextToken());
-		long score = Long.parseLong(st.nextToken());
+		int score = Integer.parseInt(st.nextToken());
 		int p = Integer.parseInt(st.nextToken());
-		long[] rankList = new long[n];
+		int[] rankList = new int[n];
 		int rank = 1;
 		int rankCheck =0;
 		if(n == 0){
@@ -22,7 +22,7 @@ public class Main {
 		} else {
 			st = new StringTokenizer(br.readLine());
 			for (int i = 0; i < n; i++) {
-				rankList[i] = Long.parseLong(st.nextToken());
+				rankList[i] = Integer.parseInt(st.nextToken());
 			}
 
 			for (int i = 0; i < n; i++) {
