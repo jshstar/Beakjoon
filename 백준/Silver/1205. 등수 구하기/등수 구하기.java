@@ -19,26 +19,30 @@ public class Main {
 		int rankCheck =0;
 		if(n == 0){
 			bw.write(1 + "\n");
-		} else {
-			st = new StringTokenizer(br.readLine());
-			for (int i = 0; i < n; i++) {
-				rankList[i] = Integer.parseInt(st.nextToken());
-			}
+			bw.flush();
+			return;
+		}
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < n; i++) {
+			rankList[i] = Integer.parseInt(st.nextToken());
+		}
 
-			for (int i = 0; i < n; i++) {
-				if(score <= rankList[i]){
-					rankCheck ++;
-					if(score < rankList[i]){
-						rank++;
-					}
+		for (int i = 0; i < n; i++) {
+			if(score <= rankList[i]){
+				rankCheck ++;
+				if(score < rankList[i]){
+					rank++;
 				}
-			}
-			if(p == rankCheck){
-				bw.write(-1 + "\n");
 			} else {
-				bw.write(rank + "\n");
+				break;
 			}
 		}
+		if (p == rankCheck) {
+			bw.write(-1 + "\n");
+		} else {
+			bw.write(rank + "\n");
+		}
+
 
 
 
