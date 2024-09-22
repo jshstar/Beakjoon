@@ -15,25 +15,27 @@ public class Main {
 		int n = Integer.parseInt(br.readLine());
 		int m = Integer.parseInt(br.readLine());
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		;
-		List<Integer> list = new ArrayList<>();
+
+		int[] lamp = new int[m];
+		
 		int start;
 		int end;
 		int between;
 		int betweenMax = 0;
 		for (int i = 0; i < m; i++) {
-			list.add(Integer.parseInt(st.nextToken()));
+			lamp[i] =Integer.parseInt(st.nextToken()); 
+			
 		}
 
 		if (m == 1) {
-			start = list.get(0);
-			end = n - list.get(0);
+			start = lamp[0];
+			end = n - lamp[0];
 			bw.write(Math.max(start, end) + "\n");
 		} else {
-			start = list.get(0);
-			end = n - list.get(list.size() - 1);
+			start = lamp[0];
+			end = n - lamp[lamp.length - 1];
 			for (int i = 1; i < m; i++) {
-				between = list.get(i) - list.get(i - 1);
+				between = lamp[i] - lamp[i - 1];
 				if(betweenMax < between){
 					betweenMax = between;
 				}
