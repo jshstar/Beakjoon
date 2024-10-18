@@ -1,52 +1,57 @@
-import java.util.*;
 import java.io.*;
- 
+import java.util.*;
+
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        
-        int N = Integer.parseInt(st.nextToken());
-        int d = Integer.parseInt(st.nextToken());   // 초밥 가짓수
-        int k = Integer.parseInt(st.nextToken());   // 연속해서 먹는 접시의 수
-        int c = Integer.parseInt(st.nextToken());   // 쿠폰 번호
-        
-        int[] sushi = new int[N];
-        for(int i = 0 ; i < N ; i++) {
-            sushi[i] = Integer.parseInt(br.readLine());
-        }
-        
-        int[] chk = new int[d+1];   // 먹은 초밥 종류 관련 배열
-        chk[c] = 3001;  // 무료 초밥 종류
-        
-        int cnt = 1;    // 무료 초밥이 1개이므로
-        
-        // 1. 회전하지 않았을 때 초밥 종류 구하기
-        for(int i = 0 ; i < k ; i++) {
-            if(chk[sushi[i]] == 0)
-                cnt++;
-            
-            chk[sushi[i]]++;
-        }
-        
-        int max = cnt;
-        
-        // ⭐ 2. N-1번 회전을 투 포인터로 실행
-        for(int i = 0 ; i < N-1 ; i++) {
-            int sIdx = sushi[i];    // 처음 먹은 초밥 종류
-            int eIdx = sushi[((i+k) < N) ? (i+k) : (i+k) % N];    // 마지막 + 1번째 먹을 초밥 종류
-            
-            // 처음 먹은 초밥 종류가 더 이상 없을 때
-            if(--chk[sIdx] == 0)
-                cnt--;
-                
-            // 마지막 +1번째 먹을 초밥이 처음 먹는 것일 때
-            if(++chk[eIdx] == 1)
-                cnt++;
-           
-            max = Math.max(max, cnt);
-        }
-        
-        System.out.println(max);
-    }
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		int d = Integer.parseInt(st.nextToken()); // 초밥 가짓수
+		int k = Integer.parseInt(st.nextToken()); // 연속 접시 수
+		int c = Integer.parseInt(st.nextToken()); // 쿠폰번호
+		int[] cho = new int[n];
+		for (int i = 0; i < n; i++) {
+			cho[i] = Integer.parseInt(br.readLine());
+		}
+
+		int[] eat = new int[d + 1];
+		eat[c] = 3001;
+		int cnt = 1;
+		for (int i = 0; i < k; i++) {
+			if (eat[cho[i]] == 0) {
+				cnt++;
+			}
+			eat[cho[i]]++;
+		}
+
+		int max = cnt;
+
+		for (int i = 0; i < n - 1; i++) {
+			int start = cho[i];
+			int end;
+			if (i + k < n) {
+				end = cho[i + k];
+			} else {
+				end = cho[(i + k) % n] ;
+			}
+
+			if(--eat[start] == 0){
+				cnt--;
+			}
+
+			if(++eat[end] == 1){
+				cnt++;
+			}
+			max = Math.max(max, cnt);
+		}
+		bw.write(String.valueOf(max));
+
+		bw.flush();
+		bw.close();
+		br.close();
+
+	}
+
 }
