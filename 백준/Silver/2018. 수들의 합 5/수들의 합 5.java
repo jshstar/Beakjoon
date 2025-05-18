@@ -13,7 +13,6 @@ public class Main {
 		int cnt = 1;
 		while (start < n) {
 			int sum = 0;
-			boolean flag = true;
 			for (int i = start; i <= end; i++) {
 				sum += i;
 			}
@@ -37,4 +36,5 @@ public class Main {
 	}
 
 }
+
 
