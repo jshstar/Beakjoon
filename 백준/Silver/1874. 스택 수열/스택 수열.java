@@ -25,6 +25,7 @@ public class Main {
 				sb.append("-\n");
 			}
 		}
+        
 		if(stack.size()>0){
 			bw.write("NO\n");
 		}
