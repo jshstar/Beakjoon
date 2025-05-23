@@ -45,8 +45,8 @@ public class Main {
 			for (int i = 0; i < 4; i++) {
 				int ny = dy[i] + arr[0];
 				int nx = dx[i] + arr[1];
-
-				if (nx < 0 || ny < 0 || ny >= n || nx >= m) {
+				
+                if (nx < 0 || ny < 0 || ny >= n || nx >= m) {
 					continue;
 				}
 				if (graph[ny][nx] == 0) {
@@ -55,6 +55,7 @@ public class Main {
 				if (visited[ny][nx]) {
 					continue;
 				}
+                
 				q.add(new int[] {ny, nx});
 				visited[ny][nx] = true;
 				graph[ny][nx] = graph[arr[0]][arr[1]] + 1;
