@@ -4,9 +4,7 @@ import java.io.*;
 public class Main {
 
 	static int n, m;
-
 	static int[][] map;
-
 	static boolean[] visited;
 
 	public static void main(String[] args) throws IOException {
@@ -18,7 +16,6 @@ public class Main {
 		map = new int[n][n];
 		visited = new boolean[n];
 		int cnt = 0;
-
 
 		for (int i = 0; i < m; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
