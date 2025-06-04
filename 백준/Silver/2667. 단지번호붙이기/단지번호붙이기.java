@@ -14,17 +14,20 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		n = Integer.parseInt(br.readLine());
+		
+        n = Integer.parseInt(br.readLine());
 		graph = new int[n][n];
 		visited = new boolean[n][n];
 		result = new LinkedList<>();
 		cnt = 1;
+        
 		for (int i = 0; i < n; i++) {
 			String s = br.readLine();
 			for (int j = 0; j < n; j++) {
 				graph[i][j] = s.charAt(j) - '0';
 			}
 		}
+        
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				if (graph[i][j] == 1 && !visited[i][j]) {
@@ -34,6 +37,7 @@ public class Main {
 				}
 			}
 		}
+        
 		Collections.sort(result);
 		bw.write(result.size() + "\n");
 		for (int r : result) {
